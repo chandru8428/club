@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Peter Golf Club</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <style>
+        body {
+            background: url('{% static "clubapp/golf.jpg" %}') no-repeat center center fixed;
+
+            background-size: cover;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.65);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .container-box {
+            background-color: #ffffffdd;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+            color: #333;
+        }
+
+        .header-title {
+            font-size: 32px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #ffc107;
+        }
+
+        .btn-gold {
+            background-color: #ffc107;
+            color: black;
+            font-weight: bold;
+        }
+
+        .btn-gold:hover {
+            background-color: #e0a800;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+        
+    </style>
+</head>
+<body>
+    
+<div class="overlay">
+    <div class="container">
+        <div class="header-title">🏌️‍♂️ Peter Golf Club</div>
+<!-- Include header layout above -->
+
+<div class="container-box text-center">
+    <h4 class="text-danger">Delete Membership</h4>
+    <p>Are you sure you want to delete <strong>{{ membership.user.username }}</strong>’s membership?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="{% url 'membership_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+    </div>
+</div>
+</body>
+</html>
